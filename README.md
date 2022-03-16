@@ -45,12 +45,12 @@ belongs_to :prefecture
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | post_code      | string     | null: false                    |
-| prefecture_id  | references | null: false, foreign_key: true |
+| prefecture_id  | integer    | null: false, foreign_key: true |
 | municipalities | string     | null: false                    |
 | address        | string     | null: false                    |
 | building       | string     |                                |
 | phone_number   | string     | null: false                    |
-| shipping       | references | null: false, foreign_key: true |
+| order          | references | null: false, foreign_key: true |
 
 belongs_to :order
 belongs_to :prefecture
