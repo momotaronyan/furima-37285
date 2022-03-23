@@ -10,8 +10,8 @@ class User < ApplicationRecord
     validates :first_name
   end
 
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z{6,}/i
-  validates_format_of :password, with: PASSWORD_REGEX, allow_blank: true, message: 'には半角英数字混合かつ6文字以上で設定してください' 
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
+  validates_format_of :password, with: PASSWORD_REGEX, allow_blank: true, message: 'には半角英数字混合で設定してください' 
 
   with_options presence: true, format: { with: /\A[ァ-ヴー]+\z/, allow_blank: true, message: 'には全角カタカナを使用してください' } do
     validates :family_name_kana
