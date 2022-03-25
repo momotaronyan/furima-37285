@@ -8,9 +8,13 @@ class Item < ApplicationRecord
   belongs_to :scheduled_delivery
   has_one_attached :image
 
+  validates :image, presence: true
   validates :name, presence: true
   validates :information, presence: true
   validates :price, presence: true
+  validates :price, numericality: { with: /\A[0-9]+\z/, message: 'では半角数字のみを使用してください' }
+  validates :price,
+            numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'の価格範囲は 300円 から 9,999,999円となっております' }
 
   validates :category_id, numericality: { other_than: 1 , message: "を選択してください"}
   validates :status_id, numericality: { other_than: 1 , message: "を選択してください"}
