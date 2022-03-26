@@ -13,7 +13,7 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :information, presence: true
   validates :price, presence: true
-  validates :price, numericality: { with: /\A[0-9]+\z/, message: 'では半角数字のみを使用してください' }
+  validates :price, numericality: { only_integer: true, message: 'では半角数字のみを使用してください' }
   validates :price,
             numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'の価格範囲は 300円 から 9,999,999円 で設定してください' }
 
