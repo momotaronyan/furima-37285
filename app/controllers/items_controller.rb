@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :id_get, only: [:show, :edit]
+  before_action :id_get, only: [:show, :edit, :redirect_to_index]
+  before_action :return_to_index, only: [:edit]
   def index
     @items = Item.includes(:user).order("created_at DESC")
   end
@@ -43,5 +44,11 @@ class ItemsController < ApplicationController
 
   def id_get
     @item = Item.find(params[:id])
+  end
+
+  def return_to_index
+    unless current_user.id == @item.user_id
+      redirect_to action: :index
+    end
   end
 end
