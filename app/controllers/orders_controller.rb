@@ -9,7 +9,12 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:id])
     @order = Order.create(order_params)
     Shipping.create(shipping_params)
-    redirect_to root_path
+    if @order.valid?
+      @order.save
+      return redirect_to root_path
+    else
+      render 'index'
+    end
   end
 
   private
