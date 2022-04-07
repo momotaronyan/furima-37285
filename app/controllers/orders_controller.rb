@@ -1,16 +1,16 @@
 class OrdersController < ApplicationController
+  before_action :id_get, only: [:index, :create]
   def index
+    @order_shipping = OrderShipping.new
   end
 
   def new
   end
 
   def create
-    @item = Item.find(params[:id])
-    @order = Order.create(order_params)
-    Shipping.create(shipping_params)
-    if @order.valid?
-      @order.save
+    @order_shipping = OrderShipping.new(order_params)
+    if @order_shipping.valid?
+      @order_shipping.save
       return redirect_to root_path
     else
       render 'index'
@@ -20,10 +20,10 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit().merge(user_id: current_user.id, item_id: @item.id)
+    params.require(:order_shipping).permit(:post_code, :prefecture_id, :municipality, :address, :building, :phone_number).merge(user_id: current_user.id, item_id: @item.id)
   end
 
-  def shipping_params
-    params.require(:shipping).permit(:post_code, :prefecture_id, :municipality, :address, :building, :phone_number).merge(order_id: @order.id)
+  def id_get
+    @item = Item.find(params[:item_id])
   end
 end
