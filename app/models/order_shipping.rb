@@ -11,6 +11,7 @@ class OrderShipping
     validates :order_id
     validates :item_id
     validates :user_id
+    validates :token
   end
   validates :prefecture_id, numericality: { other_than: 1 , message: "を選択してください"}
 
