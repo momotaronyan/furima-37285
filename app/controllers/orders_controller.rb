@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :id_get, only: [:index, :create]
   before_action :return_to_root, only: [:index, :create]
   def index
@@ -40,7 +41,7 @@ class OrdersController < ApplicationController
   
   private
   def return_to_root
-    if @item.order
+    if @item.order || current_user.id = @item.user.id
       redirect_to root_path
     end
   end
