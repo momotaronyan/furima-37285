@@ -6,7 +6,7 @@ class OrderShipping
     validates :post_code, format: {with: /\A\d{3}[-]\d{4}\z/, message: 'は○○○-○○○○の形で入力してください'}
     validates :municipality
     validates :address
-    validates :phone_number, numericality: { only_integer: true, message: 'では半角数字のみを使用してください' }
+    validates :phone_number, format: {with: /\A\d{10}$|^\d{11}\z/, message: 'はハイフン(-)を取った形で入力してください'}
     validates :prefecture_id
     validates :item_id
     validates :user_id
