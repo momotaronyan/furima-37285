@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :id_get, only: [:index, :create]
+  before_action :return_to_root, only: [:index, :create]
   def index
     @order_shipping = OrderShipping.new
   end
@@ -36,5 +37,11 @@ class OrdersController < ApplicationController
       currency: 'jpy'
     )
   end
-
+  
+  private
+  def return_to_root
+    if @item.order
+      redirect_to root_path
+    end
+  end
 end
