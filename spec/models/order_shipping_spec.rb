@@ -52,13 +52,23 @@ RSpec.describe OrderShipping, type: :model do
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include("Phone number can't be blank")
       end
+      it 'tokenが空だと保存できないこと' do
+        @order_shipping.token = ''
+        @order_shipping.valid?
+        expect(@order_shipping.errors.full_messages).to include("Token can't be blank")
+      end
       it 'post_codeが異形式(3桁ハイフン4桁外)だと保存できないこと' do
         @order_shipping.post_code = '01234567'
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include("Post code は○○○-○○○○の形で入力してください")
       end
-      it 'phone_numberが異形式(10桁以上11桁以内の半角数値外)だと保存できないこと' do
+      it 'phone_numberが9桁以内だと保存できないこと' do
         @order_shipping.phone_number = '012345678'
+        @order_shipping.valid?
+        expect(@order_shipping.errors.full_messages).to include("Phone number はハイフン(-)を取った形で入力してください")
+      end
+      it 'phone_numberが12桁以上だと保存できないこと' do
+        @order_shipping.phone_number = '012345678901'
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include("Phone number はハイフン(-)を取った形で入力してください")
       end
@@ -71,6 +81,11 @@ RSpec.describe OrderShipping, type: :model do
         @order_shipping.item_id = nil
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include("Item can't be blank")
+      end
+      it '電話番号に半角数字以外が含まれている場合は保存できないこと' do
+        @order_shipping.phone_number = 'Phone-nnumber'
+        @order_shipping.valid?
+        expect(@order_shipping.errors.full_messages).to include("Phone number はハイフン(-)を取った形で入力してください")
       end
     end
   end
