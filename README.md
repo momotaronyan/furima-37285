@@ -13,10 +13,10 @@
 | first_name_kana    | string | null: false               |
 | birthday           | date   | null: false               |
 
-has_many:products, dependent:destroy
+has_many:items, dependent:destroy
 has_many:orders, dependent:destroy
 
-## products テーブル
+## items テーブル
 
 | Column                | Type       | Options                        |
 | ----------------------| ---------- | ------------------------------ |
@@ -63,5 +63,5 @@ belongs_to :prefecture
 | product | references | null: false, foreign_key: true |
 
 belongs_to :user
-belongs_to :product
+belongs_to :item
 has_one :shipping
