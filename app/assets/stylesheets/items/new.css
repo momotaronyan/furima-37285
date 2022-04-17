@@ -74,8 +74,7 @@
 
 /* 商品画像 */
 .img-upload {
-  display: flex;
-  justify-content: space-between;
+
   flex-wrap: wrap;
   padding: 2vh 0;
 }
@@ -227,3 +226,14 @@
 .inc {
   font-size: 13px;
 }
+
+.preview img{
+  display: block;
+  margin:auto;
+  width: 33vh;
+  height: 33vh;
+  }
+
+
+
+  
