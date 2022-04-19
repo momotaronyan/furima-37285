@@ -234,6 +234,12 @@
   height: 33vh;
   }
 
+.image-delete-button {
+  text-align: center;
+  border: solid 1px;
+  cursor: pointer;
+}
+
 
 
   

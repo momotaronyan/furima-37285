@@ -7,10 +7,10 @@ class Item < ApplicationRecord
   belongs_to :burden
   belongs_to :prefecture
   belongs_to :scheduled_delivery
-  has_one_attached :image
+  has_many_attached :images
   has_one :order
 
-  validates :image, presence: true
+  validates :images, presence: true
   validates :name, presence: true
   validates :information, presence: true
   validates :price, presence: true
