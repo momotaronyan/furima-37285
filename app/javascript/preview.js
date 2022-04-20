@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function(){
     // 削除ボタンを生成
     const deleteButton = document.createElement("div");
     deleteButton.setAttribute("class", "image-delete-button");
-    deleteButton.innerText = "削除";
+    deleteButton.innerText = "取り消す";
 
     // 削除ボタンをクリックしたらプレビューとfile_fieldを削除させる
     deleteButton.addEventListener("click", () => deleteImage(dataIndex));
@@ -100,9 +100,7 @@ document.addEventListener('DOMContentLoaded', function(){
     if (imageCount < imageLimits) buildNewFileField();
   };
 
-  // input要素を取得
   const fileField = document.querySelector('input[type="file"][name="item[images][]"]');
 
-  // input要素で値の変化が起きた際に呼び出される関数
   fileField.addEventListener('change', changedFileField);
 });

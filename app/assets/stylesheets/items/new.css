@@ -44,6 +44,11 @@
   font-weight: bold;
   min-width: 170px;
   margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.items-sell-title {
+  font-size: 30px;
 }
 
 .select-box {
@@ -74,7 +79,7 @@
 
 /* 商品画像 */
 .img-upload {
-
+  display: flex;
   flex-wrap: wrap;
   padding: 2vh 0;
 }
@@ -228,17 +233,38 @@
 }
 
 .preview img{
-  display: block;
-  margin:auto;
-  width: 33vh;
-  height: 33vh;
+  width: 145px;
+  height: 145px;
+  
   }
 
 .image-delete-button {
   text-align: center;
   border: solid 1px;
   cursor: pointer;
+  border-radius: 3px;
+  background: linear-gradient(white, #ffbd61);
 }
+
+#previews {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.preview {
+  margin: 15px;
+
+
+}
+
+.click-upload input {
+  margin-bottom: 5px;
+  background-color: rgb(208, 241, 205);
+  border-radius: 5px;
+}
+
+
 
 
 
