@@ -205,3 +205,21 @@
   font-weight: bold;
   font-size: 23px;
 }
+
+.other-images {
+  display: flex;
+
+
+}
+
+.other-image img {
+  margin-right: 10px;
+  height: 200px;
+  width: 200px;
+}
+
+.main-image {
+  height: 200px;
+  width: 200px;
+}
+
