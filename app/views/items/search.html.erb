@@ -5,33 +5,34 @@
   </div>
   <%= search_form_for @q, url: search_items_path, html: {id: "detailed-search-form"} do |f| %>
     <div class="search-field">
-      <%= f.label :name, 'キーワード'%>
+      <%= f.label :name, 'キーワード', class:"type" %>
       <br>
       <%= f.text_field :name, placeholder: '', value: params[:q]&.dig(:name),  class:"keyword" %>
     </div>
     <div class="search-field">
-      <%= f.label :user_nickname_cont, '出品者名' %>
+      <%= f.label :user_nickname_cont, '出品者で絞る', class:"type" %>
       <br>
-      <%= f.text_field :user_nickname_cont, placeholder: '' %>
+      <%= f.text_field :user_nickname_cont, placeholder: '',  class:"keyword" %>
     </div>
     <div class="search-field">
-      <%= f.label :category_id_in, 'カテゴリ' %>
+      <%= f.label :category_id_in, 'カテゴリ', class:"type" %>
       <br>
       <%= f.collection_check_boxes(:category_id_in, Category.all, :id, :name, {include_blank: "---"}) %>
     </div>
     <div class="search-field">
-      <%= f.label :price_gteq, '価格'%>
+      <%= f.label :price_gteq, '価格', class:"type"%>
       <br>
       <%= f.number_field :price_gteq, id: "price"%> ~<%= f.number_field :price_lteq, id: "price"%> 円
       
       
     </div>
     <%= f.submit '検索',class:"go" %>
+    <input class="go2", type="reset" value="リセット">
   <% end %>
 </div>
 <div class="items">
 <% @items.each do |item| %>
-      <li class='list'>
+      <li class='itemss'>
         <%= link_to item_path(item.id), method: :get do %>
         <div class='item-img-content'>
           <%= image_tag item.images[0], class: "item-img" %>

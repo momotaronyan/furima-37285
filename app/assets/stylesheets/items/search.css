@@ -2,13 +2,16 @@
   width: 25%;
   border: 1px solid rgb(110, 110, 110);
   padding: 20px;
-  margin: 0px 20px;
+  margin: 0px 0px 0px 20px;
 
 }
 
 .items {
-  width: 70%;
+  width: 100vw;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0px 0px 10px 20px;
 }
 
 .all {
@@ -17,7 +20,7 @@
 }
 
 #price {
-  width: 110px;
+  width: 84px;
 }
 
 .search-field {
@@ -41,7 +44,7 @@
 }
 
 .go {
-  width: 40%;
+  width: 45%;
   background: #ea352d;
   border: 1px solid #ea352d;
   color: #fff;
@@ -49,8 +52,27 @@
   cursor: pointer;
   border-radius: 7px;
   font-size: 18px;
+  margin-right: 4px;
+}
+.go2 {
+  width: 45%;
+  background: #f5f5f5;
+  border: 1px solid #a8a8a8;
+  color: rgb(0, 0, 0);
+  line-height: 48px;
+  cursor: pointer;
+  border-radius: 7px;
+  font-size: 18px;
 }
 
-.list {
+
+.itemss {
   zoom: 80%;
+  list-style: none;
 }
+
+
+.type {
+  font-size: 18px;
+}
+
