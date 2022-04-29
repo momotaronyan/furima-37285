@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :id_get, only: [:show, :edit, :update, :destroy]
   before_action :return_to_index, only: [:edit, :destroy]
   def index
@@ -39,6 +39,15 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     redirect_to root_path
+  end
+
+  def search
+    if params[:q]&.dig(:name)
+      squished_keywords = params[:q][:name].squish
+      params[:q][:name_cont_any] = squished_keywords.split(" ")
+    end
+    @q = Item.ransack(params[:q])
+    @items = @q.result
   end
   private
 

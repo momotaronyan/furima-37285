@@ -1,3 +1,29 @@
+<header class='top-page-header'>
+  <div class='search-bar-contents'>
+  <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
+    <%= search_form_for Item.ransack(params[:q]), url: search_items_path, html: {class: "search-form"} do |f| %>
+      <%= f.text_field :name, placeholder: 'キーワードから探す', class: 'input-box' %>
+      <button class="search-button">
+        <%= image_tag "search.png", class:"search-icon" %>
+      </button>
+    <% end %>
+  </div>
+  <div class='nav'>
+    <ul class='lists-left'>
+      <li><%= link_to '商品一覧', search_items_path, class: "category-list" %></li>
+      <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
+    </ul>
+    <ul class='lists-right'>
+    <% if user_signed_in? %>
+      <li><%= link_to 'お問い合わせはこちら', "#", class: "user-nickname" %></li>
+      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout", data: { confirm: 'ログアウトしますか？'} %></li>
+      <% else %>
+      <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+      <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+      <% end %>
+    </ul>
+  </div>
+</header>
 <h1><%= @user.nickname %> のマイページ</h1>
 <p>未完成</p>
 <% unless @card.present? %>
@@ -7,9 +33,12 @@
 <% end %>
 
 <%= link_to "編集", edit_user_path(current_user), class: "edit_user" %>
-  <div class = 'item-contents'>
-    <% @user.items.each do |item| %>
-      <li class='list'>
+
+ <div class="user_item">
+  <h1><%= @user.nickname %>さんの出品商品一覧</h1>
+  <div class="items">
+<% @user.items.each do |item| %>
+      <li class='itemss'>
         <%= link_to item_path(item.id), method: :get do %>
         <div class='item-img-content'>
           <%= image_tag item.images[0], class: "item-img" %>
@@ -38,4 +67,5 @@
         <% end %>
       </li>
       <% end %>
+</div>
 </div>

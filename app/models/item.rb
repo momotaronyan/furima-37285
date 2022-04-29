@@ -18,9 +18,10 @@ class Item < ApplicationRecord
   validates :price,
             numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'の価格範囲は 300円 から 9,999,999円 で設定してください' }
 
-  validates :category_id, numericality: { other_than: 1 , message: "を選択してください"}
-  validates :status_id, numericality: { other_than: 1 , message: "を選択してください"}
-  validates :burden_id, numericality: { other_than: 1 , message: "を選択してください"}
-  validates :prefecture_id, numericality: { other_than: 1 , message: "を選択してください"}
-  validates :scheduled_delivery_id, numericality: { other_than: 1 , message: "を選択してください"} 
+
+    validates :category_id, presence: true
+    validates :status_id, presence: true
+    validates :burden_id, presence: true
+    validates :prefecture_id, presence: true
+    validates :scheduled_delivery_id, presence: true
 end
