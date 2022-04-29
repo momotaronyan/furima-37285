@@ -1,6 +1,6 @@
 class OrderShipping
   include ActiveModel::Model
-  attr_accessor :post_code, :prefecture_id, :municipality, :address, :building, :phone_number, :order_id, :item_id, :user_id, :token
+  attr_accessor :post_code, :prefecture_id, :municipality, :address, :building, :phone_number, :order_id, :item_id, :user_id
 
   with_options presence: true do
     validates :post_code, format: {with: /\A\d{3}[-]\d{4}\z/, message: 'は○○○-○○○○の形で入力してください'}
@@ -10,7 +10,6 @@ class OrderShipping
     validates :prefecture_id
     validates :item_id
     validates :user_id
-    validates :token
   end
   validates :prefecture_id, numericality: { other_than: 1 , message: "を選択してください"}
 
