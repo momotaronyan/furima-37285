@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     resources :orders
   end
   resources :cards, only: [:new, :create]
-  resources :users, only: [:show, :update]
+  resources :users, only: [:show, :edit, :update]
 end

@@ -1,7 +1,41 @@
-<h1>Users#詳細ページ</h1>
+<h1><%= @user.nickname %> のマイページ</h1>
 <p>未完成</p>
 <% unless @card.present? %>
 カード情報無し
 <% else %>
 カード情報あり
 <% end %>
+
+<%= link_to "編集", edit_user_path(current_user), class: "edit_user" %>
+  <div class = 'item-contents'>
+    <% @user.items.each do |item| %>
+      <li class='list'>
+        <%= link_to item_path(item.id), method: :get do %>
+        <div class='item-img-content'>
+          <%= image_tag item.images[0], class: "item-img" %>
+
+          <%# 商品が売れている場の表示 %>
+          <% if item.order %>
+          <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div>
+          <% end %>
+          <%# //商品が売れている場の表示装 %>
+
+        </div>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            <%= item.name %>
+          </h3>
+          <div class='item-price'>
+            <span><%= item.price %>円<br><%= item.burden.name %></span>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </li>
+      <% end %>
+</div>
