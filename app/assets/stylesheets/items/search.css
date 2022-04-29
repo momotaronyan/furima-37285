@@ -1,0 +1,56 @@
+.search {
+  width: 25%;
+  border: 1px solid rgb(110, 110, 110);
+  padding: 20px;
+  margin: 0px 20px;
+
+}
+
+.items {
+  width: 70%;
+  display: flex;
+}
+
+.all {
+  display: flex;
+  margin: 20px 0;
+}
+
+#price {
+  width: 110px;
+}
+
+.search-field {
+  margin: 10px 0;
+  padding: 8px 0;
+  border-top: solid rgb(179, 179, 179);
+}
+
+.keyword {
+  width: 100%;
+  padding: 8px 8px 4px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 17px;
+  resize: none;
+}
+
+#mean {
+  font-weight: bold;
+  font-size: 19px;
+}
+
+.go {
+  width: 40%;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+  line-height: 48px;
+  cursor: pointer;
+  border-radius: 7px;
+  font-size: 18px;
+}
+
+.list {
+  zoom: 80%;
+}
