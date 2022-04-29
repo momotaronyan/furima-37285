@@ -25,10 +25,22 @@
     </div>
     <%= f.password_field :password, class:"input-default", id:"password", placeholder:"" %>
   </div>
+  
   <div class='login-btn'>
     <%= f.submit "ログイン" ,class:"login-red-btn" %>
   </div>
 </div>
-<% end %>
 
+<% end %>
+<div class="ss">
+<div class="sns_login">
+  SNSアカウントでログイン<br>
+  <%= link_to user_facebook_omniauth_authorize_path, method: :post do%>
+    <button class="facebook" >Facebookでログイン</button>
+  <% end %>
+    <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post do%>
+    <button class="google" >Googleでログイン</button>
+  <% end %>
+</div>
+</div>
 <%= render "shared/second-footer"%>
