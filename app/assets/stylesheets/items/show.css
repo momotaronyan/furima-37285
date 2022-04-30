@@ -144,7 +144,7 @@
 .comment-box {
   width: 40vw;
   background-color: #fff;
-  margin: 5vh 0;
+  margin: 4vh 0;
   text-align: center;
 }
 
@@ -173,6 +173,7 @@
   font-size: 18px;
   border-radius: 100px;
   margin-bottom: 2vh;
+  cursor: pointer;
 }
 
 .comment-flag {
@@ -227,4 +228,17 @@
   color: rgb(0, 38, 255);
   border-bottom: solid 3px #87CEFA;
   font-size: 18px;
+}
+
+.comment{
+  display: flex;
+}
+
+.comment p{
+   margin: 0;
+}
+
+.user-info{
+  color: gray;
+  font-weight: bold;
 }
