@@ -229,3 +229,16 @@
   border-bottom: solid 3px #87CEFA;
   font-size: 18px;
 }
+
+.comment{
+  display: flex;
+}
+
+.comment p{
+   margin: 0;
+}
+
+.user-info{
+  color: gray;
+  font-weight: bold;
+}
