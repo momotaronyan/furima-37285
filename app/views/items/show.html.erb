@@ -95,24 +95,20 @@
       </div>
     <% end %>
 </div>
-<div class="comment-box">
-  <% if user_signed_in? %>
-    <form>
+<% if user_signed_in? %>
+  <div class="comment-box">
       <%= form_with model: [@item, @comment], id: "comment-form" do |f| %>
         <%= f.text_area :text , class: "comment-text"%>
-      <p class="comment-warn">
-        相手のことを考え丁寧なコメントを心がけましょう。
-        <br>
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      </p>
-      <button type="submit" class="comment-btn">
-        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        コメントをする
+        <p class="comment-warn">
+          相手のことを考え丁寧なコメントを心がけましょう。
+       <br>
+          不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        </p>
+      <%= f.submit "💬コメントをする", class: "comment-btn" %>
         <% end %>
       </button>
-    </form>
-  <% end %>
-</div>
+  </div>
+<% end %>
   <div class="links">
     <a href="#" class="change-item-btn">
       ＜ 前の商品
