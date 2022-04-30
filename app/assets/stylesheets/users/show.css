@@ -27,7 +27,7 @@
   justify-content: center;
 }
 
-.item-lists>.list {
+.your_item>.list {
   width: 37vh;
   padding: 1vw;
   background-color: #FFF;
@@ -114,4 +114,80 @@ h1 {
   justify-content: center;
   margin: 0px 0px 10px 20px;
 
+}
+.cardpanic {
+  width: 80%;
+  height: 100px;
+  background-color: rgb(236, 104, 104);
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 6px;
+  justify-content: center;
+  color: white;
+  font-size: 25px;
+  align-items: center;
+}
+
+.cardnone {
+  width: 80%;
+  height: 100px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 6px;
+  border: 5px solid rgb(11, 170, 11);
+  justify-content: center;
+  color: rgb(20, 160, 78);
+  font-size: 25px;
+  align-items: center;
+}
+
+.statement {
+  padding: 3px 7px 0 6px;
+  font-size: 70px;
+  margin-right: 20px;
+}
+
+.statement2 {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.mozi {
+  padding: 10px;
+  font-weight: bold;
+}
+
+.card_up {
+  color: white;
+  border-bottom: 2px solid white;
+  font-weight: normal;
+  margin: 0 0 0 120px;
+  background-color: tomato;
+  text-shadow: 0 0 0.1em rgba(0,0,0,1);
+}
+
+.card_in {
+  color: white;
+  border-bottom: 2px solid rgb(31, 197, 72);
+  font-weight: normal;
+  margin: 0 0 0 20px;
+  background-color: rgb(182, 241, 195);
+  text-shadow: 0 0 0.2em rgba(0,0,0,1);
+}
+
+
+.cardpanic p {
+  font-weight: bold;
+}
+
+.your_item {
+  zoom: 70%;
+  background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10vh 0;
 }

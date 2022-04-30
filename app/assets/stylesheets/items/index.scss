@@ -309,3 +309,12 @@ a {
 }
 
 /* //商品一覧 */
+
+//フラッシュメッセージ
+#notice {
+  text-align: center;
+  background: linear-gradient(to right, #fff 0%, #3388dd 30%, #3388dd 70%, #fff 100%);
+  color: #fff;
+  font-size: 26px;
+  text-shadow: 2px 3px 3px #060672;
+}

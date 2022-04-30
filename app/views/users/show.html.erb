@@ -25,31 +25,51 @@
   </div>
 </header>
 <h1><%= @user.nickname %> のマイページ</h1>
+<div class="cardnone">
+  <div class="statement">⚠️</div>
+  <div class="statement2">
+    <p>支払い用カード情報の登録がまだされていないようです。
+    <br>カードを登録してお買い物を楽しみましょう。
+    <%= link_to '👉カード情報の登録はこちら', "#", class: "card_in" %></p>
+  </div>
+</div>
+<% if @card.exp_month == @month && @card.exp_year == @year && current_user.id == @user.id %>
+  成功です(期限)
+  <% else %>
+  カードはまだ有効です
+<% end %>
 <p>未完成</p>
 <% unless @card.present? %>
 カード情報無し
 <% else %>
 カード情報あり
 <% end %>
-
+<div class="cardpanic">
+  <div class="statement">⚠️</div>
+  <div class="statement2">
+    <p>カードの有効期限が近づいていますので、情報の更新をお願い致します。
+    <br>有効期限 : <%= @card.exp_year %>年 <%= @card.exp_month %>月 31日
+    <%= link_to '👉カード情報の更新はこちら', "#", class: "card_up" %></p>
+  </div>
+</div>
 <%= link_to "編集", edit_user_path(current_user), class: "edit_user" %>
 
  <div class="user_item">
   <h1><%= @user.nickname %>さんの出品商品一覧</h1>
-  <div class="items">
-<% @user.items.each do |item| %>
+    <ul class="item-lists">
+    <% @user.items.each do |item| %>
       <li class='itemss'>
-        <%= link_to item_path(item.id), method: :get do %>
+      <%= link_to item_path(item.id), method: :get do %>
         <div class='item-img-content'>
           <%= image_tag item.images[0], class: "item-img" %>
 
-          <%# 商品が売れている場の表示 %>
-          <% if item.order %>
+        <%# 商品が売れている場の表示 %>
+        <% if item.order %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
-          <% end %>
-          <%# //商品が売れている場の表示装 %>
+        <% end %>
+        <%# //商品が売れている場の表示装 %>
 
         </div>
         <div class='item-info'>
@@ -64,8 +84,8 @@
             </div>
           </div>
         </div>
-        <% end %>
-      </li>
       <% end %>
-</div>
+      </li>
+    <% end %>
+    </ul>
 </div>

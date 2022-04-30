@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
 
   def show
+    time = Time.now
+    @year = time.year
+    @month = time.month
     @user = User.find(params[:id])
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # 環境変数を読み込む
     card = Card.find_by(user_id: @user.id) # ユーザーのid情報を元に、カード情報を取得
