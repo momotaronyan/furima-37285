@@ -1,19 +1,45 @@
-<%= render "shared/header" %>
+<header class='top-page-header'>
+  <div class='search-bar-contents'>
+  <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
+    <%= search_form_for Item.ransack(params[:q]), url: search_items_path, html: {class: "search-form"} do |f| %>
+      <%= f.text_field :name, placeholder: 'キーワードから探す', class: 'input-box' %>
+      <button class="search-button">
+        <%= image_tag "search.png", class:"search-icon" %>
+      </button>
+    <% end %>
+  </div>
+  <div class='nav'>
+    <ul class='lists-left'>
+      <li><%= link_to '商品一覧', search_items_path, class: "category-list" %></li>
+      <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
+    </ul>
+    <ul class='lists-right'>
+    <% if user_signed_in? %>
+      <li><%= link_to current_user.nickname, user_path(current_user), class: "user-nickname" %></li>
+      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout", data: { confirm: 'ログアウトしますか？'} %></li>
+      <% else %>
+      <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+      <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+      <% end %>
+    </ul>
+  </div>
+</header>
   <h1 class='info-input-haedline'>
     お問い合わせフォーム
   </h1>
+  
 <div class="form-group">
-  <form action="https://api.staticforms.xyz/submit" method="post">
-  <input type="hidden" name="accessKey" value="bd3430a9-463f-47f3-92b8-8696b807a7d0">
+<%= form_with model: @connect, url:connects_path, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
     <div class="item">
       <label class="form-text">お名前</label>
-      <input type="text" class="input-default" name="name" required >
+      <%= f.text_field :name, class:"input-default",:required => true %>
+
     </div>
 </div>
 <div class="form-group">
     <div class="item">
       <label class="form-text">メールアドレス</label>
-      <input type="email" class="input-default" name="email" required >
+      <%= f.text_field :email, class:"input-default",:required => true %>
     </div>
 </div>
 
@@ -21,9 +47,15 @@
     <div class="item">
       <p class="form-text">お問い合わせ内容</p>
       <div class="content">
-      <input type="radio" name="content" id="i" value="i"><label for="i">出品する商品について</label>
-      <input type="radio" name="content" id="c" value="c"><label for="c">支払いカードにについて</label>
-      <input type="radio" name="content" id="a" value="a"><label for="a">その他</label>
+
+
+      <%= f.radio_button :content, '1',id:"i" ,:required => true %>
+      <%= f.label :content, '商品について', value: 1 ,id: "i" %>
+      <%= f.radio_button :content, '2',id: "c" ,:required => true %>
+      <%= f.label :content, '支払いカードについて', value: 2%>
+      <%= f.radio_button :content, '3',id: "a",:required => true  %>
+      <%= f.label :content, 'その他', value: 3 %>
+
       </div>
     </div>
 </div>
@@ -31,14 +63,15 @@
 <div class="form-group">
     <div class="situmon">
       <label class="form-text">ご質問</label>
-      <textarea class="inputs" name="message" placeholder="ご質問はこちら" required></textarea>
+      <%= f.text_area :comment, class:"inputs", placeholder:"ご質問はこちら" ,rows:"7" ,maxlength:"1000" ,:required => true %>
+
     </div>
 </div>
 
     <div class="button-area">
-      <input type="submit" value="送信する" class="sousin" id="back" >
-      <%= link_to "もどる", user_path(current_user), class: "modoru" %>
+      <%= f.submit "送信する" ,class:"sousin" %>
+      <%= link_to "もどる", root_path, class: "modoru" %>
     </div>
-  </form>
+  <% end %>
 </div>
 <%= render "shared/footer" %>

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
     resources :comments, only: :create
   end
-  resources :cards, only: [:new, :create]
+  resources :cards, only: [:new, :create, :edit, :update]
   resources :users, only: [:show, :edit, :update]
-  resources :connects, only: [:index]
+  resources :connects, only: [:index, :create]
 end

@@ -170,8 +170,11 @@
 
 .Card h1 {
   color: #22a3d6;
+  font-size: 25px;
 }
 
 .item-payment h1 {
   color: #22a3d6;
+  font-size: 25px;
+  text-align: left;
 }

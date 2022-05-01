@@ -32,9 +32,8 @@
     <%# /支払額の表示 %>
 
     <%= form_with model: @order_shipping, url:item_orders_path, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
-    <%= render 'shared/error_messages', model: @order_shipping %>
 
-    <%# お支払い方法 %>
+    <%# お支払い方法 %> 
   <div class="Card">
     <h1>お支払い</h1>
   <p>
@@ -54,13 +53,19 @@
           <span class="indispensable">必須</span>
         </div>
         <%= f.text_field :post_code, class:"input-default", id:"postal-code", placeholder:"例）123-4567", maxlength:"8" %>
+        <% if @order_shipping.errors.include?(:post_code) %>
+          <p class="error" style="color: red;"><%= @order_shipping.errors.full_messages_for(:post_code).first %>
+        <% end %>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
           <label class="form-text">都道府県</label>
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"prefecture"}) %>
+        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank:"---"}, {class:"select-box", id:"prefecture"}) %>
+        <% if @order_shipping.errors.include?(:prefecture_id) %>
+          <p class="error" style="color: red;"><%= @order_shipping.errors.full_messages_for(:prefecture_id).first %>
+        <% end %>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
@@ -68,6 +73,9 @@
           <span class="indispensable">必須</span>
         </div>
         <%= f.text_field :municipality, class:"input-default", id:"city", placeholder:"例）横浜市緑区"%>
+        <% if @order_shipping.errors.include?(:municipality) %>
+          <p class="error" style="color: red;"><%= @order_shipping.errors.full_messages_for(:municipality).first %>
+        <% end %>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
@@ -75,6 +83,9 @@
           <span class="indispensable">必須</span>
         </div>
         <%= f.text_field :address, class:"input-default", id:"addresses", placeholder:"例）青山1-1-1"%>
+        <% if @order_shipping.errors.include?(:address) %>
+          <p class="error" style="color: red;"><%= @order_shipping.errors.full_messages_for(:address).first %>
+        <% end %>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
@@ -89,6 +100,9 @@
           <span class="indispensable">必須</span>
         </div>
         <%= f.text_field :phone_number, class:"input-default", id:"phone-number", placeholder:"例）09012345678",maxlength:"11"%>
+        <% if @order_shipping.errors.include?(:phone_number) %>
+          <p class="error" style="color: red;"><%= @order_shipping.errors.full_messages_for(:phone_number).first %>
+        <% end %>
       </div>
     </div>
     <%# /配送先の入力 %>

@@ -2,14 +2,9 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :id_get, only: [:index, :create]
   before_action :return_to_root, only: [:index, :create]
+  before_action :card_get, only: [:index, :create]
   def index
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # 環境変数を読み込む
-    card = Card.find_by(user_id: current_user.id) # ユーザーのid情報を元に、カード情報を取得
-    #redirect_to new_card_path and return unless card.present?
-    if card.present?
-      customer = Payjp::Customer.retrieve(card.customer_token) # 先程のカード情報を元に、顧客情報を取得
-      @card = customer.cards.first
-    end
     @order_shipping = OrderShipping.new
   end
 
@@ -18,6 +13,7 @@ class OrdersController < ApplicationController
     if @order_shipping.valid?
       @order_shipping.save
       pay_item
+      flash[:notice] = "商品を購入しました。出品者からのメッセージをお待ちください。"
       return redirect_to root_path
     else
       render 'index'
@@ -50,5 +46,15 @@ class OrdersController < ApplicationController
     if @item.order || current_user.id == @item.user.id
       redirect_to root_path
     end
+  end
+
+  def card_get
+    card = Card.find_by(user_id: current_user.id) # ユーザーのid情報を元に、カード情報を取得
+    #redirect_to new_card_path and return unless card.present?
+    if card.present?
+      customer = Payjp::Customer.retrieve(card.customer_token) # 先程のカード情報を元に、顧客情報を取得
+      @card = customer.cards.first
+    end
+    @order_shipping = OrderShipping.new
   end
 end
