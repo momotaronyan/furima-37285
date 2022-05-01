@@ -21,6 +21,9 @@
           クリックしてファイルをアップロード
         </p>
         <%= f.file_field :images, id:"item-image", name: 'item[images][]', data: {index: 0}  %>
+        <% if @item.errors.include?(:images) %>
+          <p class="error" style="color: red;"><%= @item.errors.full_messages_for(:images).first %>
+        <% end %>
       </div>
     </div>
     <%# /商品画像 %>
@@ -31,12 +34,18 @@
         <span class="indispensable">必須</span>
       </div>
       <%= f.text_area :name, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+        <% if @item.errors.include?(:name) %>
+          <p class="error" style="color: red;"><%= @item.errors.full_messages_for(:name).first %>
+        <% end %>
       <div class="items-explain">
         <div class="weight-bold-text">
           商品の説明
           <span class="indispensable">必須</span>
         </div>
         <%= f.text_area :information, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
+        <% if @item.errors.include?(:information) %>
+          <p class="error" style="color: red;"><%= @item.errors.full_messages_for(:information).first %>
+        <% end %>
       </div>
     </div>
     <%# /商品名と商品説明 %>
@@ -50,11 +59,17 @@
           <span class="indispensable">必須</span>
         </div>
         <%= f.collection_select(:category_id, Category.all, :id, :name, {include_blank:"---"}, {class:"select-box", id:"item-category"}) %>
+        <% if @item.errors.include?(:category_id) %>
+          <p class="error" style="color: red;"><%= @item.errors.full_messages_for(:category_id).first %>
+        <% end %>
         <div class="weight-bold-text">
           商品の状態
           <span class="indispensable">必須</span>
         </div>
         <%= f.collection_select(:status_id, Status.all, :id, :name, {include_blank:"---"}, {class:"select-box", id:"item-sales-status"}) %>
+        <% if @item.errors.include?(:status_id) %>
+          <p class="error" style="color: red;"><%= @item.errors.full_messages_for(:status_id).first %>
+        <% end %>
       </div>
     </div>
     <%# /商品の詳細 %>
@@ -71,16 +86,25 @@
           <span class="indispensable">必須</span>
         </div>
         <%= f.collection_select(:burden_id, Burden.all, :id, :name, {include_blank:"---"}, {class:"select-box", id:"item-shipping-fee-status"}) %>
+        <% if @item.errors.include?(:burden_id) %>
+          <p class="error" style="color: red;"><%= @item.errors.full_messages_for(:burden_id).first %>
+        <% end %>
         <div class="weight-bold-text">
           発送元の地域
           <span class="indispensable">必須</span>
         </div>
         <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank:"---"}, {class:"select-box", id:"item-prefecture"}) %>
+        <% if @item.errors.include?(:prefecture_id) %>
+          <p class="error" style="color: red;"><%= @item.errors.full_messages_for(:prefecture_id).first %>
+        <% end %>
         <div class="weight-bold-text">
           発送までの日数
           <span class="indispensable">必須</span>
         </div>
         <%= f.collection_select(:scheduled_delivery_id, ScheduledDelivery.all, :id, :name, {include_blank:"---"}, {class:"select-box", id:"item-scheduled-delivery"}) %>
+        <% if @item.errors.include?(:scheduled_delivery_id) %>
+          <p class="error" style="color: red;"><%= @item.errors.full_messages_for(:scheduled_delivery_id).first %>
+        <% end %>
       </div>
     </div>
     <%# /配送について %>
@@ -114,6 +138,11 @@
         </span>
       </div>
     </div>
+      <div class="price_error">
+        <% if @item.errors.include?(:price) %>
+          <p class="error2" style="color: red;"><%= @item.errors.full_messages_for(:price).first %>
+        <% end %>
+      </div>
     <%# /販売価格 %>
 
     <%# 注意書き %>

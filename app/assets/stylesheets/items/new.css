@@ -264,8 +264,24 @@
   border-radius: 5px;
 }
 
+.error {
+  width : 100%;
+  padding: 0;
+  display: inline-block;
+  font-size: 18px;
+  color: red;
+  box-sizing: border-box;
+}
 
-
+.error2 {
+  width : 100%;
+  padding: 0;
+  display: inline-block;
+  font-size: 18px;
+  color: red;
+  box-sizing: border-box;
+  text-align: right;
+}
 
 
   

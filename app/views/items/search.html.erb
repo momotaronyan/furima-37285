@@ -1,4 +1,31 @@
-<%= render "shared/header" %>
+<header class='top-page-header'>
+  <div class='search-bar-contents'>
+  <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
+    <%= search_form_for Item.ransack(params[:q]), url: search_items_path, html: {class: "search-form"} do |f| %>
+      <%= f.text_field :name, placeholder: 'キーワードから探す', class: 'input-box' %>
+      <button class="search-button">
+        <%= image_tag "search.png", class:"search-icon" %>
+      </button>
+    <% end %>
+  </div>
+  <div class='nav'>
+    <ul class='lists-left'>
+      <li><%= link_to 'トップページへ', root_path, class: "category-list" %></li>
+      <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
+    </ul>
+    <ul class='lists-right'>
+    <% if user_signed_in? %>
+      <li><%= link_to 'お問い合わせ', connects_path, class: "logout2" %></li>
+      <li><%= link_to current_user.nickname, user_path(current_user), class: "user-nickname" %></li>
+      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout", data: { confirm: 'ログアウトしますか？'} %></li>
+      <% else %>
+      <li><%= link_to 'お問い合わせ', connects_path, class: "login" %></li>
+      <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+      <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+      <% end %>
+    </ul>
+  </div>
+</header>
 <div class='all'>
 <div class="search">
   <div id="mean">絞り込み検索
@@ -47,7 +74,7 @@
 
         </div>
         <div class='item-info'>
-          <h3 class='item-name'>
+          <h3 class='item-name2'>
             <%= item.name %>
           </h3>
           <div class='item-price'>

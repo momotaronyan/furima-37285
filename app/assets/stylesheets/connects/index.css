@@ -3,6 +3,7 @@
   flex-direction: row;
   align-items: center;
   padding-top: 10px;
+  justify-content: center;
 }
 
 #c{

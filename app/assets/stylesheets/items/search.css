@@ -3,7 +3,7 @@
   border: 1px solid rgb(110, 110, 110);
   padding: 20px;
   margin: 0px 0px 0px 20px;
-
+  height: 640px;
 }
 
 .items {
@@ -76,3 +76,6 @@
   font-size: 18px;
 }
 
+.item-name2 {
+  font-size: 2.5vh;
+}
