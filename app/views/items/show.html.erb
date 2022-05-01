@@ -1,4 +1,7 @@
 <%= render "shared/header" %>
+  <% if user_signed_in? && current_user.admin?  %>
+    <h2 class="admin">管理者モード</h2>
+  <% end %>
 
 <%# 商品の概要 %>
 <div class="item-show">
@@ -31,9 +34,14 @@
         <%= @item.burden.name %>
       </span>
     </div>
+
 <% unless @item.order %> <%#商品が売れていない場合 %>
   <% if user_signed_in? %>
-    <% if current_user.id == @item.user.id %>
+    <% if user_signed_in? && current_user.admin? %>
+      <%= link_to "購入処理", item_orders_path(@item.id) ,class:"item-red-btn"%>
+      <%= link_to "編集処理", edit_item_path, method: :get, class: "item-red-btn" %>
+      <%= link_to "削除処理", item_path(@item.id), method: :delete, class:"item-destroy" %>
+    <% elsif current_user.id == @item.user.id %>
       <%= link_to "商品の編集", edit_item_path, method: :get, class: "item-red-btn" %>
       <p class="or-text">or</p>
       <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
@@ -41,6 +49,11 @@
       <%= link_to "購入画面に進む", item_orders_path(@item.id) ,class:"item-red-btn"%>
     <% end %>
   <% end %>
+  <% else %>
+    <% if user_signed_in? && current_user.admin? %>
+      <%= link_to "編集処理", edit_item_path, method: :get, class: "item-red-btn" %>
+      <%= link_to "削除処理", item_path(@item.id), method: :delete, class:"item-destroy" %>
+    <%end%>
 <% end %>
 
     <div class="item-explain-box">

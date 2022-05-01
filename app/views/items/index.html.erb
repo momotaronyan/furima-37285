@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
 <%= render "shared/header" %>
+  <% if user_signed_in? && current_user.admin?  %>
+    <h2 class="admin">管理者モード</h2>
+  <% end %>
 <div class='main'>
 
   <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>

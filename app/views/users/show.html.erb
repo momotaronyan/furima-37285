@@ -15,7 +15,7 @@
     </ul>
     <ul class='lists-right'>
     <% if user_signed_in? %>
-      <li><%= link_to 'お問い合わせ', connects_path, class: "logout2" %></li>
+      <% unless current_user.admin?%><li><%= link_to 'お問い合わせ', connects_path, class: "logout2" %></li><%end%>
       <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout", data: { confirm: 'ログアウトしますか？'} %></li>
       <% else %>
       <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
@@ -24,10 +24,13 @@
     </ul>
   </div>
 </header>
-
+  <% if user_signed_in? && current_user.admin?  %>
+    <h2 class="admin">管理者モード</h2>
+  <% end %>
 
 <% if user_signed_in? %>
 <h1><%= @user.nickname %></h1>
+<% unless current_user.admin? %>
 <% current_user.id == @user.id %>
   <% unless @card.present? %>
     カード情報無し
@@ -58,6 +61,7 @@
 <%= link_to "ka-do編集", edit_card_path, class: "edit_user" %>
 <% end %>
 <% end %>
+<% end %>
 
 
 
@@ -65,7 +69,11 @@
   <% if @user.items.present? %>
   <h1><%= @user.nickname %>さんの出品商品一覧</h1>
   <% else %>
-  <p class="item_exist"><%= @user.nickname %>さんはまだ商品を出品していません</p>
+    <% if current_user.admin? %>
+      <p class="admin_item_exist">🌟テックキャンプさん、今までありがとうございました！！🌟</p>
+    <% else %>
+      <p class="item_exist"><%= @user.nickname %>さんはまだ商品を出品していません</p>
+    <% end %>
   <% end %>
     <ul class="item-lists">
     <% @user.items.each do |item| %>

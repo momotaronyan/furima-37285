@@ -54,7 +54,11 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit({images: []}, :name, :information, :category_id, :status_id, :burden_id, :prefecture_id, :scheduled_delivery_id, :price).merge(user_id: current_user.id)
+    if current_user.admin?
+      params.require(:item).permit({images: []}, :name, :information, :category_id, :status_id, :burden_id, :prefecture_id, :scheduled_delivery_id, :price).merge(user_id: @item.user.id)
+    else
+      params.require(:item).permit({images: []}, :name, :information, :category_id, :status_id, :burden_id, :prefecture_id, :scheduled_delivery_id, :price).merge(user_id: current_user.id)
+    end
   end
 
   def id_get
@@ -62,8 +66,10 @@ class ItemsController < ApplicationController
   end
 
   def return_to_index
-    unless current_user.id == @item.user_id
-      redirect_to action: :index
+    unless current_user.admin?
+      unless current_user.id == @item.user_id
+        redirect_to action: :index
+      end
     end
     if @item.order
       redirect_to action: :index

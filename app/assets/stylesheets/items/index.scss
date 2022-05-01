@@ -241,7 +241,7 @@ a {
   width: 100vw;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .item-lists>.list {
@@ -309,6 +309,13 @@ a {
 }
 
 /* //商品一覧 */
+
+.admin {
+  background-color: aquamarine;
+  text-align: center;
+  font-size: 25px;
+  color: #3b3b3b;
+}
 
 //フラッシュメッセージ
 #notice {
