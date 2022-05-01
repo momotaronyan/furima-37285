@@ -7,7 +7,8 @@ class ConnectsController < ApplicationController
     @connect = Connect.new(connect_params)
     if @connect.valid?
       @connect.save
-      return redirect_to user_path(current_user)
+      flash[:notice] = "お問い合わせありがとうございます。"
+      return redirect_to root_path
     else
       render 'index'
     end

@@ -136,7 +136,7 @@
 /* 販売価格 */
 .sell-price {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   flex-wrap: wrap;
 }
 
