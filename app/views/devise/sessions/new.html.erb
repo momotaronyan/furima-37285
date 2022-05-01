@@ -29,11 +29,7 @@
   <div class='login-btn'>
     <%= f.submit "ログイン" ,class:"login-red-btn" %>
   </div>
-</div>
-
-<% end %>
-<div class="ss">
-<div class="sns_login">
+  <div class="sns_login">
   SNSアカウントでログイン<br>
   <%= link_to user_facebook_omniauth_authorize_path, method: :post do%>
     <button class="facebook" >Facebookでログイン</button>
@@ -43,4 +39,6 @@
   <% end %>
 </div>
 </div>
+
+<% end %>
 <%= render "shared/second-footer"%>

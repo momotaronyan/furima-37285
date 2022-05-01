@@ -9,8 +9,15 @@
   </div>
 
   <%= render 'shared/error_messages', model: f.object %>
-<%= link_to 'Facebookでログイン', user_facebook_omniauth_authorize_path, method: :post%>
-<%= link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, method: :post%>
+<div class="sns_login">
+  SNSアカウントで登録<br>
+  <%= link_to user_facebook_omniauth_authorize_path, method: :post do%>
+    <button class="facebook" >Facebookで登録</button>
+  <% end %>
+    <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post do%>
+    <button class="google" >Googleで登録</button>
+  <% end %>
+</div>
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">ニックネーム</label>

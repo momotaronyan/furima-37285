@@ -11,7 +11,7 @@
 .form-wrap {
   width: 50%;
   background-color: white;
-  padding-bottom: 70px;
+  padding-bottom: 40px;
 }
 
 .form-header {
@@ -150,8 +150,9 @@
   border: 1px solid #ea352d;
   color: #fff;
   line-height: 48px;
-  font-size: 14px;
+  font-size: 25px;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 .register-info {
