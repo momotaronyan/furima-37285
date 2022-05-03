@@ -57,7 +57,7 @@
 <% end %>
 
     <div class="item-explain-box">
-      <span><%= @item.information %></span>
+      <span class="information"><%= @item.information %></span>
     </div>
     <table class="detail-table">
       <tbody>
@@ -98,15 +98,7 @@
     </div>
   </div>
   <%# /商品の概要 %>
-<div id="comments" class="comment-box">
-  <h4>＜コメント一覧＞</h4>
-    <% @item.comments.each do |comment| %>
-      <div class="comment">
-        <p class="user-info"><%= comment.user.nickname %>： </p>
-        <p><%= comment.text%></p>
-      </div>
-    <% end %>
-</div>
+
 <% if user_signed_in? %>
   <div class="comment-box">
       <%= form_with model: [@item, @comment], id: "comment-form" do |f| %>
@@ -121,6 +113,15 @@
       </button>
   </div>
 <% end %>
+<div id="comments" class="comment-box2">
+  <p class="kome">＜コメント一覧＞</p>
+    <% @item.comments.each do |comment| %>
+      <div class="comment">
+        <p class="user-info"><%= comment.user.nickname %>： </p>
+        <p><%= comment.text%></p>
+      </div>
+    <% end %>
+</div>
   <div class="links">
     <a href="#" class="change-item-btn">
       ＜ 前の商品
