@@ -15,11 +15,17 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update(user_params) # 更新出来たかを条件分岐する
-      redirect_to root_path # 更新できたらrootパスへ
+    @user = User.find(params[:id])
+    if @user.update(user_params) 
+      bypass_sign_in(@user) 
+      redirect_to user_path(@user)
     else
-      redirect_to action: "show" # 失敗すれば再度マイページへ
+      redirect_to edit_user_path
     end
+  end
+
+  def edit
+    @user = User.find(params[:id])
   end
 
   def favorites
@@ -27,10 +33,12 @@ class UsersController < ApplicationController
     favorites= Favorite.where(user_id: @user.id).pluck(:item_id)
     @favorite_items = Item.find(favorites)
   end
+
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :email) # 編集出来る情報を制限
+    params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :family_name, :first_name, :family_name_kana, :first_name_kana, :birthday) # 編集出来る情報を制限
   end
 
 end

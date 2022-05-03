@@ -15,11 +15,11 @@ Rails.application.routes.draw do
     resources :comments, only: :create
     resource :favorites, only: [:create, :destroy]
   end
-  resources :cards, only: [:new, :create, :edit, :update]
+  resources :cards, only: [:new, :create, :destroy]
   resources :users, only: [:show, :edit, :update] do
     member do
       get :favorites
     end
   end
-  resources :connects, only: [:index, :create]
+  resources :connects, only: [:index, :new, :create]
 end

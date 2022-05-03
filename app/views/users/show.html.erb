@@ -15,7 +15,8 @@
     </ul>
     <ul class='lists-right'>
     <% if user_signed_in? %>
-      <% unless current_user.admin?%><li><%= link_to 'お問い合わせ', connects_path, class: "logout2" %></li><%end%>
+      <% unless current_user.admin?%><li><%= link_to 'お問い合わせ', new_connect_path, class: "logout2" %></li><%end%>
+      <% if current_user.admin?%><li><%= link_to 'お客様からのお問い合わせ', connects_path, class: "logout2" %></li><%end%>
       <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout", data: { confirm: 'ログアウトしますか？'} %></li>
       <% else %>
       <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
@@ -28,43 +29,52 @@
     <h2 class="admin">管理者モード</h2>
   <% end %>
 
-<% if user_signed_in? %>
+<% if user_signed_in? && current_user.id == @user.id %>
 <h1><%= @user.nickname %></h1>
-<% unless current_user.admin? %>
-<% current_user.id == @user.id %>
-  <% unless @card.present? %>
-    カード情報無し
-    <div class="cardnone">
-      <div class="statement">⚠️</div>
-      <div class="statement2">
-       <p>支払い用カード情報の登録がまだされていないようです。
-       <br>カードを登録してお買い物を楽しみましょう。
-        <%= link_to '👉カード情報の登録はこちら', new_card_path, class: "card_in" %></p>
-      </div>
-    </div>
-  <% else %>
-    カード情報あり
-    <% if @card.exp_month == @month && @card.exp_year == @year %>
-      成功です(期限が接近中)
-      <div class="cardpanic">
+  <% unless current_user.admin? %>
+    <% unless @card.present? %>
+     カード情報無し
+     <div class="cardnone">
         <div class="statement">⚠️</div>
-        <div class="statement2">
-        <p>カードの有効期限が近づいていますので、情報の更新をお願い致します。
-        <br>有効期限 : <%= @card.exp_year %>年 <%= @card.exp_month %>月 31日
-        <%= link_to '👉カード情報の更新はこちら', "#", class: "card_up" %></p>
-        </div>
+       <div class="statement2">
+        <p>支払い用カード情報の登録がまだされていないようです。
+         <br>カードを登録してお買い物を楽しみましょう。
+          <%= link_to '👉カード情報の登録はこちら', new_card_path, class: "card_in" %></p>
+       </div>
       </div>
     <% else %>
-    カードはまだ有効です
+      <% if @card.exp_month == @month && @card.exp_year == @year %>
+        成功です(期限が接近中)
+       <div class="cardpanic">
+          <div class="statement">⚠️</div>
+          <div class="statement2">
+          <p>カードの有効期限が近づいていますので、情報の更新をお願い致します。
+          <br>有効期限 : <%= @card.exp_year %>年 <%= @card.exp_month %>月 31日
+          <%= link_to '👉カード情報の更新はこちら', card_path(@card), method: :delete, class: "card_up" %></p>
+          </div>
+       </div>
+      <% else %>
+      <div class="Card__title">
+        <h2>カード情報(他ユーザーからは見えません)</h2>
+        </div>
+        <div class="Card_info">
+          【カード番号】
+           <br>
+           <%= "**** **** **** " + @card[:last4] %>
+            <br>
+            【有効期限】
+            <br>
+           <%= @card[:exp_month] %>
+            /
+            <%= @card[:exp_year] %>
+         </div><br>
+      <% end %>
+        <%= link_to "ユーザー情報を編集", edit_user_path(current_user), class: "edit_user" %><br>
+        <%= link_to "登録しているカード情報を削除", card_path(@card), method: :delete, class: "edit_user", data: { confirm: 'クレジットカード情報を削除します。よろしいですか？'} %>
+    <% end %>
+      <p><%=link_to"”いいね！”した商品",favorites_user_path(@user) %></p>
   <% end %>
-<%= link_to "編集", edit_user_path(current_user), class: "edit_user" %>
-<%= link_to "ka-do編集", edit_card_path, class: "edit_user" %>
-<p><%=link_to"”いいね！”した商品",favorites_user_path(@user) %></p>
 <% end %>
-<% end %>
-<% end %>
-
-
 
  <div class="user_item">
   <% if @user.items.present? %>

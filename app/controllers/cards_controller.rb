@@ -23,16 +23,18 @@ class CardsController < ApplicationController
     end
   end
 
-  def edit
-    @card = Card.find(params[:user_id])
-  end
 
-  def update
-    @item.update(item_params)
-    if @item.save
-      redirect_to item_path
+  def destroy
+    @card = current_user.card
+    if @card.blank?
+      redirect_to action: "new"
     else
-      render :edit
-    end
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      customer = Payjp::Customer.retrieve(@card.customer_token)
+      customer.delete
+      @card.delete
+      flash[:notice] = "クレジットカードの情報を登録し直してください"
+      redirect_to action: "new"
+    end  
   end
 end

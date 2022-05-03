@@ -1,5 +1,10 @@
 class ConnectsController < ApplicationController
+  before_action :return_to_index, only: [:index]
   def index
+    @connect = Connect.all
+  end
+
+  def new
     @connect = Connect.new
   end
 
@@ -19,4 +24,11 @@ class ConnectsController < ApplicationController
   def connect_params
     params.require(:connect).permit(:name, :email, :content, :comment)
   end
+
+  def return_to_index
+    unless user_signed_in? && current_user.admin?
+      redirect_to root_path
+    end
+  end
+
 end

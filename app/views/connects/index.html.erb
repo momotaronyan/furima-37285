@@ -27,53 +27,28 @@
   </div>
 </header>
   <h1 class='info-input-haedline'>
-    お問い合わせフォーム
+    お客様からのお問い合わせ
   </h1>
-  
-<div class="form-group">
-<%= form_with model: @connect, url:connects_path, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
-    <div class="item">
-      <label class="form-text">お名前</label>
-      <%= f.text_field :name, class:"input-default",:required => true %>
-
-    </div>
-</div>
-<div class="form-group">
-    <div class="item">
-      <label class="form-text">メールアドレス</label>
-      <%= f.text_field :email, class:"input-default",:required => true %>
-    </div>
-</div>
-
-<div class="form-group">
-    <div class="item">
-      <p class="form-text">お問い合わせ内容</p>
-      <div class="content">
-
-
-      <%= f.radio_button :content, '1',id:"i" ,:required => true %>
-      <%= f.label :content, '商品について', value: 1 ,id: "i" %>
-      <%= f.radio_button :content, '2',id: "c" ,:required => true %>
-      <%= f.label :content, '支払いカードについて', value: 2%>
-      <%= f.radio_button :content, '3',id: "a",:required => true  %>
-      <%= f.label :content, 'その他', value: 3 %>
-
-      </div>
-    </div>
-</div>
-
-<div class="form-group">
-    <div class="situmon">
-      <label class="form-text">ご質問</label>
-      <%= f.text_area :comment, class:"inputs", placeholder:"ご質問はこちら" ,rows:"7" ,maxlength:"1000" ,:required => true %>
-
-    </div>
-</div>
-
-    <div class="button-area">
-      <%= f.submit "送信する" ,class:"sousin" %>
-      <%= link_to "もどる", root_path, class: "modoru" %>
-    </div>
-  <% end %>
-</div>
+    <ul class='connect-lists'>
+      <% @connect.each do |connect| %>
+      <li class='list'>
+        <div class='connect-info'>
+          <h3 class='connet-name'>
+            お問い合わせ内容:
+            <% if connect.content == 1 %>
+              商品について
+            <% elsif connect.content == 2 %>
+              支払いカードについて
+            <% elsif connect.content == 3 %>
+              その他
+            <% end %>
+            /<%= connect.name %>様/<%= connect.email %>
+          </h3>
+          <div class='connect_comment'>
+            <%= connect.comment %>
+          </div>
+        </div>
+      </li>
+      <% end %>
+    </ul>
 <%= render "shared/footer" %>

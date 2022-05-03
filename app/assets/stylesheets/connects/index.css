@@ -59,3 +59,22 @@
   font-size: 25px;
   text-align: center;
 }
+
+.connect-info {
+  background-color: #FFF;
+  color: black;
+  padding: 1vw;
+  border: 3px solid blueviolet;
+  border-radius: 5px;
+  margin: 18px 5px;
+}
+
+.connect_comment {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.connet-name {
+  font-size: 2.7vh;
+  background-color: rgb(239, 219, 255);
+}

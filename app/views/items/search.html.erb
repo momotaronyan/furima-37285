@@ -15,7 +15,7 @@
     </ul>
     <ul class='lists-right'>
     <% if user_signed_in? %>
-      <% unless current_user.admin?%><li><%= link_to 'お問い合わせ', connects_path, class: "logout2" %></li><%end%>
+      <% unless current_user.admin?%><li><%= link_to 'お問い合わせ', new_connect_path, class: "logout2" %></li><%end%>
       <li><%= link_to current_user.nickname, user_path(current_user), class: "user-nickname" %></li>
       <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout", data: { confirm: 'ログアウトしますか？'} %></li>
       <% else %>
