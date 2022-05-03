@@ -73,3 +73,4 @@ gem "omniauth-rails_csrf_protection"
 gem 'omniauth', '~>1.9.1'
 gem 'ransack'
 gem 'rails-i18n'
+gem 'jquery-rails'

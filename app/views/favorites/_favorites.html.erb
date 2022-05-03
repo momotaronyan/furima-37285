@@ -1,0 +1,36 @@
+<% if user_signed_in? %>
+  <% if current_user.favorites.find_by(item_id: item.id) %>
+    <%= link_to item_favorites_path(item.id), method: :delete, remote: true do %>
+    <div class="icon">
+      <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+    </div>
+    <div class="text">
+      いいね!
+    </div> 
+    <div class="count">
+      <%= item.favorites.count %>
+    </div>
+  <% else %>
+    <%= link_to item_favorites_path(item.id), method: :post, remote: true do %>
+    <div class="icon">
+      <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+    </div>
+    <div class="text">
+      いいね!
+    </div> 
+    <div class="count">
+      <%= item.favorites.count %>
+    </div>
+  <% end %>
+<% else %>
+  <%= link_to new_user_session_path do %>
+    <div class="icon">
+      <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+    </div>
+      <div class="text">
+      いいね!
+    </div> 
+    <div class="count">
+      <%= item.favorites.count %>
+    </div>
+<% end %>
