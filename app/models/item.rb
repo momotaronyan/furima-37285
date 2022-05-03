@@ -10,6 +10,8 @@ class Item < ApplicationRecord
   has_many_attached :images
   has_one :order
   has_many :comments
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_users, through: :favorites, source: :user
 
   validates :images, length: { minimum: 1, maximum: 5, message: "を選択してください" }
   validates :name, presence: true

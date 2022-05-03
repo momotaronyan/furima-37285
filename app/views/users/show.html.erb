@@ -59,6 +59,7 @@
   <% end %>
 <%= link_to "編集", edit_user_path(current_user), class: "edit_user" %>
 <%= link_to "ka-do編集", edit_card_path, class: "edit_user" %>
+<p><%=link_to"”いいね！”した商品",favorites_user_path(@user) %></p>
 <% end %>
 <% end %>
 <% end %>
@@ -99,7 +100,7 @@
             <span><%= item.price %>円<br><%= item.burden.name %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
+              <span class='star-count'><%= item.favorites.count %></span>
             </div>
           </div>
         </div>

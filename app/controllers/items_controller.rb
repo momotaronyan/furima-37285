@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   before_action :return_to_index, only: [:edit, :destroy]
   def index
     @items = Item.includes(:user).order("created_at DESC")
+    #@favorite_items = Item.find(favorites)
   end
 
   def new
