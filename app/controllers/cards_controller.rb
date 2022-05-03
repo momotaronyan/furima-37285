@@ -18,6 +18,7 @@ class CardsController < ApplicationController
       flash[:notice] = "クレジットカードの登録が完了しました"
       redirect_to user_path(current_user)
     else
+      flash[:alert] = "カード登録が完了しませんでした"
       redirect_to action: "new"
     end
   end

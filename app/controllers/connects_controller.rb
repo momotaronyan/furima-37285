@@ -10,6 +10,7 @@ class ConnectsController < ApplicationController
       flash[:notice] = "お問い合わせありがとうございます。"
       return redirect_to root_path
     else
+      flash[:alert] = "お問い合わせ内容の送信に失敗しました。"
       render 'index'
     end
   end

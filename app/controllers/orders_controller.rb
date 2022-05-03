@@ -43,17 +43,27 @@ class OrdersController < ApplicationController
   
   private
   def return_to_root
+    card = Card.find_by(user_id: current_user.id)
     if @item.order || current_user.id == @item.user.id
+      if card.blank?
+        flash[:alert] = "商品を購入するには支払いカードの登録が必要です。"
+        return redirect_to new_card_path
+      end
+      flash[:alert] = "自身の出品した商品は購入できません。"
       redirect_to root_path
     end
   end
 
   def card_get
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     card = Card.find_by(user_id: current_user.id) # ユーザーのid情報を元に、カード情報を取得
     #redirect_to new_card_path and return unless card.present?
     if card.present?
       customer = Payjp::Customer.retrieve(card.customer_token) # 先程のカード情報を元に、顧客情報を取得
       @card = customer.cards.first
+    else
+      flash[:alert] = "商品を購入するには支払いカードの登録が必要です。"
+      redirect_to new_card_path
     end
     @order_shipping = OrderShipping.new
   end
