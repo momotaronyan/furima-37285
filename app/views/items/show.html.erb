@@ -88,8 +88,8 @@
       </tbody>
     </table>
     <div class="option">
-      <div class="favorite-btn" id="favorite_<%= @item.id %>">
-        <%= render 'favorites/favorites', item: @item %>
+      <div class="" id="favorite_<%= @item.id %>">
+        <%= render partial:'favorites/favorites', locals: {item: @item} %>
       </div>
       <div class="report-btn">
         <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>

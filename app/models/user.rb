@@ -40,5 +40,8 @@ class User < ApplicationRecord
     end
     { user: user, sns: sns }
   end
+  def favorited_by?(item_id)
+    favirites.where(item_id: item_id).exists?
+  end
 end
 
