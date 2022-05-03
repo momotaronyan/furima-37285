@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get 'search'
     end
     resources :comments, only: :create
+    resource :favorites, only: [:create, :destroy]
   end
   resources :cards, only: [:new, :create, :edit, :update]
   resources :users, only: [:show, :edit, :update]
