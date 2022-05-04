@@ -64,6 +64,10 @@
   text-decoration: none;
   margin-right: 3vw;
   color: #333333;
+  transition: 0.3s;
+}
+.category-list:hover {
+  background-color: rgb(232, 255, 230);
 }
 
 .brand-list {
@@ -83,6 +87,10 @@
   margin-right: 3vw;
   color: #333333;
   font-weight: bold;
+  transition: 0.3s;
+}
+.user-nickname:hover {
+  background-color: rgb(230, 240, 255);
 }
 
 .connect {
@@ -95,12 +103,21 @@
 .logout {
   text-decoration: none;
   color: #333333;
+  transition: 0.3s;
+}
+.logout:hover {
+  background-color: rgb(232, 255, 230);
 }
 
 .logout2 {
   text-decoration: none;
   color: #333333;
   margin-right: 30px;
+  transition: 0.3s;
+}
+
+.logout2:hover {
+  background-color: rgb(232, 255, 230);
 }
 
 .login {
@@ -108,9 +125,17 @@
   line-height: 32px;
   margin-right: 3vw;
   color: #333333;
+  transition: 0.3s;
 }
-
+.login:hover {
+  background-color: rgb(232, 255, 230);
+}
 .sign-up {
   text-decoration: none;
   color: #333333;
+  transition: 0.3s;
+  
+}
+.sign-up:hover {
+  background-color: rgb(255, 235, 216);
 }
