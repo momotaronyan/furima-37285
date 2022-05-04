@@ -32,32 +32,38 @@
   <% end %>
 
 <% if user_signed_in? && current_user.id == @user.id %>
-<h1><%= @user.nickname %></h1>
-  <% unless current_user.admin? %>
-    <% unless @card.present? %>
-     カード情報無し
-     <div class="cardnone">
+    <% if @card.blank? %>
+      <div class="cardnone">
         <div class="statement">⚠️</div>
-       <div class="statement2">
+        <div class="statement2">
         <p>支払い用カード情報の登録がまだされていないようです。
          <br>カードを登録してお買い物を楽しみましょう。
           <%= link_to '👉カード情報の登録はこちら', new_card_path, class: "card_in" %></p>
-       </div>
+        </div>
       </div>
     <% else %>
       <% if @card.exp_month == @month && @card.exp_year == @year %>
-        成功です(期限が接近中)
-       <div class="cardpanic">
+        <div class="cardpanic">
           <div class="statement">⚠️</div>
           <div class="statement2">
           <p>カードの有効期限が近づいていますので、情報の更新をお願い致します。
           <br>有効期限 : <%= @card.exp_year %>年 <%= @card.exp_month %>月 31日
-          <%= link_to '👉カード情報の更新はこちら', card_path(@card), method: :delete, class: "card_up" %></p>
+          <%= link_to '👉カード情報の更新はこちら', card_path(@card), method: :delete, class: "card_up", data: { confirm: 'クレジットカード情報を削除します。新たにカードを登録し直していただきますが、よろしいでしょうか？'} %></p>
           </div>
-       </div>
-      <% else %>
-      <div class="Card__title">
-        <h2>カード情報(他ユーザーからは見えません)</h2>
+        </div>
+      <% end %>
+    <% end %>
+<% end %>
+
+<div class="my_page_top">
+<% if user_signed_in? && current_user.id == @user.id %>
+  <div class="right_side">
+    <h1><%= @user.nickname %></h1>
+    <% unless current_user.admin? %>
+      <% if @card.present? %>
+        <div class="cards">
+          <div class="Card__title">
+           <h2>カード情報(他ユーザーからは見えません)</h2>
         </div>
         <div class="Card_info">
           【カード番号】
@@ -69,15 +75,44 @@
            <%= @card[:exp_month] %>
             /
             <%= @card[:exp_year] %>
+         </div>
          </div><br>
       <% end %>
-        <%= link_to "ユーザー情報を編集", edit_user_path(current_user), class: "edit_user" %><br>
-        <%= link_to "登録しているカード情報を削除", card_path(@card), method: :delete, class: "edit_user", data: { confirm: 'クレジットカード情報を削除します。よろしいですか？'} %>
     <% end %>
-      <p><%=link_to"”いいね！”した商品",favorites_user_path(@user) %></p>
-  <% end %>
+        <div><%= link_to "ユーザー情報を編集", edit_user_path(current_user), class: "edit-user" %></div><br>
+       <% if @card.present? %><div> <%= link_to "登録しているカード情報を削除", card_path(@card), method: :delete, class: "edit-card", data: { confirm: 'クレジットカード情報を削除します。よろしいですか？'} %></div><br><% end %>
+      <div><%=link_to"”いいね！”した商品",favorites_user_path(@user), class: "like-item" %></div>
+  </div>
+  <div class="middle_side">
+    <%= link_to image_tag("human.png", class:"human"), "/"  %>
+    <div class="ms">
+    出品数:--<br>
+    評価数:--
+    </div>
+  </div>
+  <div class="left_side">
+    <div class="news">
+  <div id="news">お知らせ
+  </div>
+    <div class="news-field">
+      【新生活応援】オークション37285で使える限定クーポン配布中！今すぐ近くのお店へGO!
+    </div>
+    <div class="news-field">
+      【お詫び】一部ユーザーの"ユーザー登録ができない"不具合を修正いたしました。
+    </div>
+    <div class="news-field">
+      【明日まで】/ ヨロズマートで使えるP500還元クーポン配布中！今すぐ近くのお店へGO
+    </div>
+    <div class="news-field">
+      【最終課題】テックキャンプ114期生の皆さん！<br>お疲れ様でした！楽しかったですね！！
+    </div>
+</div>
+  </div>
+</div>
 <% end %>
 
+
+  
  <div class="user_item">
   <% if @user.items.present? %>
   <h1><%= @user.nickname %>さんの出品商品一覧</h1>

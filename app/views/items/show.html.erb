@@ -87,7 +87,7 @@
         </tr>
       </tbody>
     </table>
-    <div class="option">
+    <% if user_signed_in? %><div class="option">
       <div class="" id="favorite_<%= @item.id %>">
         <%= render partial:'favorites/favorites', locals: {item: @item} %>
       </div>
@@ -95,7 +95,7 @@
         <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
         <span>不適切な商品の通報</span>
       </div>
-    </div>
+    </div><% end %>
   </div>
   <%# /商品の概要 %>
 
