@@ -220,7 +220,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10vh 0;
+  padding: 10vh 0 4vh 0;
 }
 
 .item-contents>.title {
@@ -332,4 +332,88 @@ a {
   color: #fff;
   font-size: 26px;
   text-shadow: 2px 3px 3px #720641;
+}
+
+.pagination {
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.p-top {
+  min-width: 960px;
+  &__title {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  &__introduce {
+    margin: 0 auto;
+    th {
+        padding: 0 15px;
+    }
+    td {
+      padding: 0 15px;
+    }
+  }
+  &__paginate {
+    text-align: center;
+    margin:0 auto;
+  }
+}
+
+.page.current {
+  padding: 5px;
+  font-size: 39px;
+  background-color: rgb(68, 68, 68);
+  color: white;
+  box-shadow: 2px 2px 4px gray;
+}
+
+.page {
+  border: 1px solid rgb(92, 92, 92);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 35px;
+  margin: 0 5px;
+  box-shadow: 2px 2px 4px gray;
+}
+
+.page a {
+  color: #383838;
+}
+
+.next {
+  border: 1px solid rgb(92, 92, 92);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 26px;
+  margin: 0 5px;
+  box-shadow: 2px 2px 4px gray;
+}
+
+.last {
+  border: 1px solid rgb(92, 92, 92);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 26px;
+  margin: 0 5px;
+  box-shadow: 2px 2px 4px gray;
+}
+
+.prev {
+  border: 1px solid rgb(92, 92, 92);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 26px;
+  margin: 0 5px;
+  box-shadow: 2px 2px 4px gray;
+}
+
+.first {
+  border: 1px solid rgb(92, 92, 92);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 26px;
+  margin: 0 5px;
+  box-shadow: 2px 2px 4px gray;
 }
