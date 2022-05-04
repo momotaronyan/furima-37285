@@ -1,6 +1,8 @@
 <header class='top-page-header'>
+
   <div class='search-bar-contents'>
-  <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
+  <% if user_signed_in? && current_user.admin?%><%= link_to image_tag("furima-logo-color2.png", class:"furima-icon"), "/" %><% else %>
+  <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %><% end %>
     <%= search_form_for Item.ransack(params[:q]), url: search_items_path, html: {class: "search-form"} do |f| %>
       <%= f.text_field :name, placeholder: 'キーワードから探す', class: 'input-box' %>
       <button class="search-button">
@@ -87,7 +89,7 @@
     <% end %>
   <% end %>
     <ul class="item-lists">
-    <% @user.items.each do |item| %>
+    <% @item.each do |item| %>
       <li class='itemss'>
       <%= link_to item_path(item.id), method: :get do %>
         <div class='item-img-content'>
@@ -123,4 +125,5 @@
     <span class='purchase-btn-text'>出品する</span>
     <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
   <% end %>
+          <div class='p-top__paginate'><%= paginate @item %></div>
 <%= render "shared/footer" %>

@@ -3,8 +3,8 @@ class ItemsController < ApplicationController
   before_action :id_get, only: [:show, :edit, :update, :destroy]
   before_action :return_to_index, only: [:edit, :destroy]
   def index
-    @items = Item.includes(:user).order("created_at DESC")
-    #@favorite_items = Item.find(favorites)
+    #@items = Item.includes(:user).order("created_at DESC")
+    @items = Item.order("created_at DESC").first(8)
   end
 
   def new
@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
       params[:q][:name_cont_any] = squished_keywords.split(" ")
     end
     @q = Item.ransack(params[:q])
-    @items = @q.result
+    @items = @q.result.page(params[:page]).per(30).order("created_at DESC")
   end
   private
 
