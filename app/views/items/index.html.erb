@@ -187,6 +187,7 @@
     </ul>
   </div>
   <%# /商品一覧 %>
+    <%= paginate @items %>
 </div>
 <% if user_signed_in? %>
   <%= link_to(new_item_path, class: 'purchase-btn') do %>

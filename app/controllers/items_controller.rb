@@ -3,8 +3,8 @@ class ItemsController < ApplicationController
   before_action :id_get, only: [:show, :edit, :update, :destroy]
   before_action :return_to_index, only: [:edit, :destroy]
   def index
-    @items = Item.includes(:user).order("created_at DESC")
-    #@favorite_items = Item.find(favorites)
+    #@items = Item.includes(:user).order("created_at DESC")
+    @items = Item.page(params[:page]).per(5).order("created_at DESC")
   end
 
   def new
