@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
 <header class='top-page-header'>
 
   <div class='search-bar-contents'>
@@ -73,8 +75,9 @@
             【有効期限】
             <br>
            <%= @card[:exp_month] %>
-            /
+            月 /
             <%= @card[:exp_year] %>
+            年
          </div>
          </div><br>
       <% end %>
@@ -84,10 +87,10 @@
       <div><%=link_to"”いいね！”した商品",favorites_user_path(@user), class: "like-item" %></div>
   </div>
   <div class="middle_side">
-    <%= link_to image_tag("human.png", class:"human"), "/"  %>
+    <%= link_to image_tag("human.png", class:"human"), "https://www.silhouette-illust.com/"  %>
     <div class="ms">
-    出品数:--<br>
-    評価数:--
+    出品数:<%= @user.items.count %>品<br>
+    評価数:(評価機能未実装)
     </div>
   </div>
   <div class="left_side">

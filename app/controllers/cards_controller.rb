@@ -1,4 +1,6 @@
 class CardsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :return_to_root, only: [:new, :create]
 
   def new
   end
@@ -36,5 +38,15 @@ class CardsController < ApplicationController
       flash[:notice] = "クレジットカードの情報を登録し直してください"
       redirect_to action: "new"
     end  
+  end
+
+  private
+  def return_to_root
+    @user = current_user
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    card = Card.find_by(user_id: @user.id)
+    if card.present?
+      redirect_to root_path
+    end
   end
 end
