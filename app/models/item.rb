@@ -27,4 +27,9 @@ class Item < ApplicationRecord
     validates :burden_id, presence: true
     validates :prefecture_id, presence: true
     validates :scheduled_delivery_id, presence: true
+  
+    ransacker :favorite_count do
+      query = '(SELECT COUNT(favorites.item_id) FROM favorites where favorites.item_id = items.id GROUP BY favorites.item_id)'
+      Arel.sql(query)
+    end
 end
