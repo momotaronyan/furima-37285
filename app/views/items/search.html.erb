@@ -32,6 +32,7 @@
   <div id="mean">絞り込み検索
   </div>
   <%= search_form_for @q, url: search_items_path, html: {id: "detailed-search-form"} do |f| %>
+  <%= f.select( :sorts, { '並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc', 'いいね!の多い順': 'favorite_count desc' } , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} )%>
     <div class="search-field">
       <%= f.label :name, 'キーワード', class:"type" %>
       <br>
@@ -82,7 +83,7 @@
             <span><%= item.price %>円<br><%= item.burden.name %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
+              <span class='star-count'><%= item.favorites.count %></span>
             </div>
           </div>
         </div>
