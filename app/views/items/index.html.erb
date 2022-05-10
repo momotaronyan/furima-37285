@@ -131,6 +131,7 @@
     <div class="subtitle" >
       新規投稿商品
     </div>
+    <% if @items.present? %>
     <ul class='item-lists'>
       <% @items.each do |item| %>
       <li class='list'>
@@ -161,6 +162,7 @@
         </div>
         <% end %>
       </li>
+      <% end %>
       <% end %>
 
       <%# 商品がない場合のダミー商品 %>
