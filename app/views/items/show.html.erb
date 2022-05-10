@@ -11,16 +11,12 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @item.images[0] ,class:"item-box-img" %>
-
-   
       <div class="other-images">
         <% @item.images[1..-1].each do |image| %>
         <div class="other-image">
-
           <%= link_to image_tag(image),image, :rel => "lightbox" %>
         </div>
-      <%end%>
-  </div>
+        <%end%>
   </div>
       <%# 商品が売れている場の表示 %>
       <% if @item.order %>
