@@ -67,7 +67,7 @@
   transition: 0.3s;
 }
 .category-list:hover {
-  background-color: rgb(232, 255, 230);
+  background-color: #e8ffe6;
 }
 
 .brand-list {
@@ -90,7 +90,7 @@
   transition: 0.3s;
 }
 .user-nickname:hover {
-  background-color: rgb(230, 240, 255);
+  background-color: #e6f0ff;
 }
 
 .connect {
@@ -106,7 +106,7 @@
   transition: 0.3s;
 }
 .logout:hover {
-  background-color: rgb(232, 255, 230);
+  background-color: #e8ffe6;
 }
 
 .logout2 {
@@ -117,7 +117,7 @@
 }
 
 .logout2:hover {
-  background-color: rgb(232, 255, 230);
+  background-color: #e8ffe6;
 }
 
 .login {
@@ -128,7 +128,7 @@
   transition: 0.3s;
 }
 .login:hover {
-  background-color: rgb(232, 255, 230);
+  background-color: #e8ffe6;
 }
 .sign-up {
   text-decoration: none;
@@ -137,5 +137,5 @@
   
 }
 .sign-up:hover {
-  background-color: rgb(255, 235, 216);
+  background-color: #ffebd8;
 }

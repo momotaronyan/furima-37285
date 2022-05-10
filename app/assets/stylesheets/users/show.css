@@ -106,7 +106,7 @@ h1 {
 .cardpanic {
   width: 80%;
   height: 100px;
-  background-color: rgb(236, 104, 104);
+  background-color: #ec6868;
   display: flex;
   margin-left: auto;
   margin-right: auto;
@@ -126,9 +126,9 @@ h1 {
   margin-right: auto;
   margin-bottom: 20px;
   border-radius: 6px;
-  border: 5px solid rgb(11, 170, 11);
+  border: 5px solid #0baa0b;
   justify-content: center;
-  color: rgb(20, 160, 78);
+  color: #14a04e;
   font-size: 25px;
   align-items: center;
 }
@@ -161,10 +161,10 @@ h1 {
 
 .card_in {
   color: white;
-  border-bottom: 2px solid rgb(31, 197, 72);
+  border-bottom: 2px solid #1fc548;
   font-weight: normal;
   margin: 0 0 0 20px;
-  background-color: rgb(182, 241, 195);
+  background-color: #b6f1c3;
   text-shadow: 0 0 0.2em rgba(0,0,0,1);
 }
 
@@ -214,14 +214,14 @@ h1 {
 }
 .human {
   zoom: 8%;
-  border: 30px solid rgb(88, 88, 88);
+  border: 30px solid #585858  ;
   border-radius: 120px;
   padding: 50px;
 }
 .left_side {
   width: 35%;
   padding: 9px;
-  border: 3px solid rgb(40, 77, 240);
+  border: 3px solid #284df0;
   border-radius: 6px;
   margin-right: 5px;
 }
@@ -235,15 +235,15 @@ h1 {
 }
 
 .edit-card {
-  border: 1px solid rgb(0, 209, 0);
-  color: rgb(0, 209, 0);
+  border: 1px solid #00d100;
+  color: #00d100  ;
   padding: 7px;
   border-radius: 4px;
 }
 
 .like-item {
-  border: 1px solid rgb(0, 163, 238);
-  color: rgb(0, 163, 238);
+  border: 1px solid #00a3ee;
+  color: #00a3ee;
   padding: 7px;
   border-radius: 4px;
 }
@@ -262,12 +262,12 @@ h1 {
 .news-field {
   margin: 10px 10px;
   padding: 8px 5px;
-  border-top: solid rgb(179, 179, 179);
+  border-top: solid #b3b3b3;
 }
 
 .news-field_bottom {
   margin: 10px 10px;
   padding: 8px 5px;
-  border-top: solid rgb(179, 179, 179);
-  border-bottom: solid rgb(179, 179, 179);
+  border-top: solid #b3b3b3;
+  border-bottom: solid #b3b3b3;
 }

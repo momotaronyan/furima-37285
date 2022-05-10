@@ -364,13 +364,13 @@ a {
 .page.current {
   padding: 5px;
   font-size: 39px;
-  background-color: rgb(68, 68, 68);
+  background-color: #444444;
   color: white;
   box-shadow: 2px 2px 4px gray;
 }
 
 .page {
-  border: 1px solid rgb(92, 92, 92);
+  border: 1px solid #5c5c5c;
   border-radius: 5px;
   padding: 5px;
   font-size: 35px;
@@ -383,7 +383,7 @@ a {
 }
 
 .next {
-  border: 1px solid rgb(92, 92, 92);
+  border: 1px solid #5c5c5c;
   border-radius: 5px;
   padding: 5px;
   font-size: 26px;
@@ -393,7 +393,7 @@ a {
 
 
 .last {
-  border: 1px solid rgb(92, 92, 92);
+  border: 1px solid #5c5c5c;
   border-radius: 5px;
   padding: 5px;
   font-size: 26px;
@@ -402,7 +402,7 @@ a {
 }
 
 .prev {
-  border: 1px solid rgb(92, 92, 92);
+  border: 1px solid #5c5c5c;
   border-radius: 5px;
   padding: 5px;
   font-size: 26px;
@@ -411,7 +411,7 @@ a {
 }
 
 .first {
-  border: 1px solid rgb(92, 92, 92);
+  border: 1px solid #5c5c5c;
   border-radius: 5px;
   padding: 5px;
   font-size: 26px;

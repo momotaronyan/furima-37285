@@ -29,7 +29,7 @@
   height: 50vh;
   width: 60vw;
   min-height: 500px;
-  background-color: rgb(205, 202, 202);
+  background-color: #cdcaca;
   object-fit: contain;
 }
 
@@ -174,7 +174,7 @@
 
 .kome {
   font-size: 22px;
-  background-color: rgb(213, 242, 255);
+  background-color: #d5f2ff;
   border-radius: 7px;
 }
 .comment-text {
@@ -254,7 +254,7 @@
 }
 
 .syuppinnsya {
-  color: rgb(0, 38, 255);
+  color: #0026ff;
   border-bottom: solid 3px #87CEFA;
   font-size: 18px;
 }
@@ -275,7 +275,7 @@
 }
 
 .no_message{
-  color: rgb(156, 156, 156);
+  color: #9c9c9c;
   font-weight: bold;
 }
 
