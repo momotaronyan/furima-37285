@@ -14,9 +14,9 @@
       <div class="other-images">
         <% @item.images[1..-1].each do |image| %>
         <div class="other-image">
-          <%= image_tag image %>
+          <%= link_to image_tag(image),image, :rel => "lightbox" %>
         </div>
-      <%end%>
+        <%end%>
   </div>
       <%# 商品が売れている場の表示 %>
       <% if @item.order %>
